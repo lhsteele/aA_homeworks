@@ -1,4 +1,5 @@
 class Stack
+  #LIFO
   def initialize(stack)
     @stack = stack 
   end
@@ -12,14 +13,30 @@ class Stack
   end
 
   def peek 
-    @stack.first 
+    @stack.last  
   end
 
 end
 
-p stack = Stack.new([1, 2, 3, 4])
-stack.push(5)
-p stack 
-p stack.pop
-p stack 
-p stack.peek
+class Queue
+  #FIFO
+  attr_reader :queue
+  def initialize(queue)
+    @queue = queue 
+  end
+
+  def enqueue(el)
+    @queue << el 
+  end
+
+  def dequeue
+    @queue.shift 
+  end
+
+  def peek  
+    @queue.first
+  end
+
+end
+
+
