@@ -19,8 +19,8 @@ class Simon
 
   def take_turn
     if @game_over == false 
-      self.require_sequence
       self.show_sequence
+      self.require_sequence
       self.round_success_message
       @sequence_length += 1
     end
@@ -31,7 +31,17 @@ class Simon
   end
 
   def require_sequence
-
+    puts "Try to repeat back the sequence of colors you see on the screen"
+    puts "for example:red blue green yellow"
+    user_input = gets.chomp 
+    guesses = user.input.split 
+    guesses.each do |guess| 
+      @seq.each do |color|
+        if guess != color
+          @game_over = true 
+        end
+      end
+    end
   end
 
   def add_random_color
@@ -39,11 +49,11 @@ class Simon
   end
 
   def round_success_message
-
+    puts "congratulations, you are a CHAMPION!!!!"
   end
 
   def game_over_message
-
+    puts "oh man, you lost! :("
   end
 
   def reset_game
